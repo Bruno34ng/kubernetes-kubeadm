@@ -17,7 +17,7 @@ DNS_ZONE="dominionclass37.k8s.local"  # Replace with your actual Route 53 DNS zo
 # Step 1: Install kops for Kubernetes 1.29 on a Linux Server
 cd /tmp  # Use /tmp directory for downloading files
 echo "Downloading kops..."
-curl -Lo kops https://github.com/kubernetes/kops/releases/download/v${K8S_VERSION}/kops-linux-amd64
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 if [ $? -ne 0 ]; then
   echo "Failed to download kops."
   exit 1
